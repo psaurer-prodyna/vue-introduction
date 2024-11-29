@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { useFetch } from '@/composables/useFetch'
 
 interface RawUser {
   id: number
@@ -8,25 +8,13 @@ interface RawUser {
   email: string
 }
 
-const users = ref<RawUser[]>([])
-const errorMessage = ref('')
-const isLoading = ref(false)
+const maxPersons = defineModel({ default: 20 })
 
-const fetchUsers = async () => {
-  try {
-    isLoading.value = true
-    const response = await fetch('https://www.freetestapi.com/api/v1/users?limit=20')
-    users.value = await response.json()
-  } catch (err) {
-    errorMessage.value = err instanceof Error ? err.message : 'An unknown error occurred'
-  } finally {
-    isLoading.value = false
-  }
-}
-
-onMounted(() => {
-  fetchUsers()
-})
+const {
+  data: users,
+  errorMessage,
+  isLoading,
+} = useFetch<RawUser[]>(() => `https://www.freetestapi.com/api/v1/users?limit=${maxPersons.value}`)
 </script>
 
 <template>
@@ -35,6 +23,7 @@ onMounted(() => {
     <div v-if="errorMessage">Oops! Error encountered: {{ errorMessage }}</div>
     <div v-else-if="users?.length">
       <h1>Persons</h1>
+      <input v-model="maxPersons" type="number" min="1" max="100" />
       <table>
         <thead>
           <tr>
