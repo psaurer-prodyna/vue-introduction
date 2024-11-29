@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useFetch } from '@/composables/useFetch'
+import { computed } from 'vue'
 
 interface RawUser {
   id: number
@@ -9,12 +10,11 @@ interface RawUser {
 }
 
 const maxPersons = defineModel({ default: 20 })
+const url = computed(
+  () => `https://www.freetestapi.com/api/v1/users?limit=${maxPersons.value}`,
+)
 
-const {
-  data: users,
-  errorMessage,
-  isLoading,
-} = useFetch<RawUser[]>(() => `https://www.freetestapi.com/api/v1/users?limit=${maxPersons.value}`)
+const { data: users, errorMessage, isLoading } = useFetch<RawUser[]>(url)
 </script>
 
 <template>
