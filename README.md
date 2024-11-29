@@ -1,11 +1,29 @@
 # Vue Introduction
 
-Small repository with multiple branches, to gradually explain differences and try out vue.  
+This template should help get you started developing with Vue 3 in Vite.
 
-## Pre-requisites
+## Recommended IDE Setup
 
-- HTML, CSS, JavaScript knowledge
-- Node.js (>= 18)
-- Package manager (preferred pnpm, but also npm works fine)
-- some IDE with Vue support (e.g. Visual Studio Code, IntelliJ IDEA or WebStorm)
-- TypeScript knowledge is a plus
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+## Project Setup
+
+```sh
+pnpm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+pnpm dev
+```
+
+### Compile and Minify for Production
+
+```sh
+pnpm build
+```
