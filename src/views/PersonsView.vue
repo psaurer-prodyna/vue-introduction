@@ -10,9 +10,7 @@ interface RawUser {
 }
 
 const maxPersons = defineModel({ default: 20 })
-const url = computed(
-  () => `https://www.freetestapi.com/api/v1/users?limit=${maxPersons.value}`,
-)
+const url = computed(() => `https://www.freetestapi.com/api/v1/users?limit=${maxPersons.value}`)
 
 const { data: users, errorMessage, isLoading } = useFetch<RawUser[]>(url)
 </script>
