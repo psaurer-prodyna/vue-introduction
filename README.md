@@ -23,7 +23,7 @@ Most of them are based on the previous ones, they will be shown here in sequence
 
 
 ### 2) vue-create/various-options-selected
-- demonstrates the basic setup of a Vue project with some extras with the vue-create command, the following options were selected:  
+- demonstrates the basic setup of a Vue project with some extras selected with the create vue command, the following options were selected:  
     ```
       ✔ Project name: … vue-introduction  
       ✔ Add TypeScript? … Yes
